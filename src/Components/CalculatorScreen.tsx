@@ -3,7 +3,7 @@ import { TextField } from "@material-ui/core";
 
 type CalculatorScreenProps = {
     className?: string;
-    content: number | string;
+    content: string;
 };
 
 const CalculatorScreen: FC<CalculatorScreenProps> = (props: CalculatorScreenProps): JSX.Element => {

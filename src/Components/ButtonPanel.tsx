@@ -25,6 +25,7 @@ const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element
         <StyledButtonPanel>
             {BUTTON_CONTENT.map((buttonContent, index) => (
                 <StyledButton
+                    key={index}
                     col={(index % NUM_OF_COLUMNS) + 1}
                     row={(index / NUM_OF_ROWS) + 1}
                     content={buttonContent}

@@ -8,7 +8,7 @@ const StyledButtonContent = styled.p`
 
 type ButtonProps = {
     className?: string;
-    content: number | string;
+    content: string;
     onClick: () => void;
 };
 
