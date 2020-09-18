@@ -1,35 +1,64 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
+import { ButtonContent } from "../Consts";
 
 const NUM_OF_COLUMNS = 4;
 const NUM_OF_ROWS = 5;
-
-const BUTTON_CONTENT = ["C", "DEL", "%", "÷", "1", "2", "3", "×", "4", "5", "6", "-", "7", "8", "9", "+", "", "0", ".", "="];
+const BUTTONS = [
+    ButtonContent.Clear,
+    ButtonContent.Delete,
+    ButtonContent.Percentage,
+    ButtonContent.Divide,
+    ButtonContent.One,
+    ButtonContent.Two,
+    ButtonContent.Three,
+    ButtonContent.Multiply,
+    ButtonContent.Four,
+    ButtonContent.Five,
+    ButtonContent.Six,
+    ButtonContent.Subtract,
+    ButtonContent.Seven,
+    ButtonContent.Eight,
+    ButtonContent.Nine,
+    ButtonContent.Add,
+    ButtonContent.Blank,
+    ButtonContent.Zero,
+    ButtonContent.Dot,
+    ButtonContent.Result
+];
 
 const StyledButtonPanel = styled.div`
     display: grid;
     grid-template-columns: repeat(${NUM_OF_COLUMNS}, 1fr);
     grid-template-rows: repeat(${NUM_OF_ROWS}, 1fr);
+    justify-items: center;
 `;
 
 const StyledButton = styled(Button)<{ col: number; row: number }>`
     grid-column: ${({ col }) => col} / span 1;
     grid-row: ${({ row }) => row} / span 1;
+    margin: 5px !important;
+    box-shadow: none !important;
 `;
 
-type ButtonPanelProps = {};
+type ButtonPanelProps = {
+    className?: string;
+    onClick: (buttonContent: ButtonContent) => void;
+};
 
 const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element => {
+    const { className, onClick } = props;
+
     return (
-        <StyledButtonPanel>
-            {BUTTON_CONTENT.map((buttonContent, index) => (
+        <StyledButtonPanel className={className}>
+            {BUTTONS.map((buttonContent, index) => (
                 <StyledButton
                     key={index}
                     col={(index % NUM_OF_COLUMNS) + 1}
                     row={(index / NUM_OF_ROWS) + 1}
                     content={buttonContent}
-                    onClick={() => null}
+                    onClick={() => onClick(buttonContent)}
                 />
             ))}
         </StyledButtonPanel>
