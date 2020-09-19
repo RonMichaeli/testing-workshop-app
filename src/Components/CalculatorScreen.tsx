@@ -1,5 +1,10 @@
 import React, { FC } from "react";
-import { TextField } from "@material-ui/core";
+import styled from "@emotion/styled";
+
+const StyledCalculatorScreen = styled.div`
+    display: flex;
+    align-items: flex-end;
+`;
 
 type CalculatorScreenProps = {
     className?: string;
@@ -10,11 +15,9 @@ const CalculatorScreen: FC<CalculatorScreenProps> = (props: CalculatorScreenProp
     const { className, expression } = props;
 
     return (
-        <TextField
-            className={className}
-            variant={"filled"}
-            value={expression}
-        />
+        <StyledCalculatorScreen className={className}>
+            {expression}
+        </StyledCalculatorScreen>
     );
 };
 

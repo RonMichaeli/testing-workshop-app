@@ -16,7 +16,7 @@ const StyledApp = styled.div`
     align-items: center;
     margin: auto;
     background-color: steelblue;
-    border-radius: 5%;
+    border-radius: 25px;
     box-shadow:
         0px 3px 5px -1px rgba(0,0,0,0.2),
         0px 6px 10px 0px rgba(0,0,0,0.14),
@@ -24,7 +24,12 @@ const StyledApp = styled.div`
 `;
 
 const StyledCalculatorScreen = styled(CalculatorScreen)`
+    height: 50px;
     width: 95%;
+    background-color: #7a8870;
+    border: dimgray 1px solid;
+    font-family: monospace;
+    font-size: xx-large;
 `;
 
 const StyledButtonPanel = styled(ButtonPanel)`
@@ -70,7 +75,7 @@ const App: FC = () => {
 
     const handleButtonClick = (buttonContent: ButtonContent): void => {
         const newExpression = calculateExpression(expression, buttonContent);
-        setExpression(newExpression);
+        setExpression(`${newExpression}`);
     };
 
     return (

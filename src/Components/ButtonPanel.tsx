@@ -40,6 +40,8 @@ const StyledButton = styled(Button)<{ col: number; row: number }>`
     grid-row: ${({ row }) => row} / span 1;
     margin: 5px !important;
     box-shadow: none !important;
+    font-size: larger !important;
+    font-family: monospace !important;
 `;
 
 type ButtonPanelProps = {

@@ -1,3 +1,4 @@
+// ToDo: convert to object of { label, value }
 export enum ButtonContent {
     Clear = "C",
     Delete = "🠔",
@@ -26,4 +27,5 @@ export const OPERATORS: ButtonContent[] = [
     ButtonContent.Subtract,
     ButtonContent.Multiply,
     ButtonContent.Divide
+    // ToDo: .Dot too?
 ];
