@@ -15,7 +15,7 @@ const cleanExpression = (expression: Expression): Expression => {
 const calculateResult = (expression: Expression): Expression => {
     let parsedExpression: Expression = "";
     for (const char of expression) {
-        parsedExpression += (BUTTON_LABEL_TO_VALUE[char] || char);
+        parsedExpression += (BUTTON_LABEL_TO_VALUE[char] ?? char);
     }
     const result = eval(cleanExpression(parsedExpression));
     return `${result}`;

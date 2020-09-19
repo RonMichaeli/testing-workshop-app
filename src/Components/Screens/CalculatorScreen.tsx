@@ -1,23 +1,30 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
+import { Expression } from "../../types";
 
-const StyledCalculatorScreen = styled.div`
+const StyledContainer = styled.div`
     display: flex;
     align-items: flex-end;
+    width: 100%;
+    background-color: #7a8870;
+    border: dimgray 1px solid;
+    font-size: xx-large;
+    word-break: break-word;
 `;
 
 type CalculatorScreenProps = {
     className?: string;
-    expression: string;
+    expression: Expression;
+    onClick?: () => void;
 };
 
 const CalculatorScreen: FC<CalculatorScreenProps> = (props: CalculatorScreenProps): JSX.Element => {
-    const { className, expression } = props;
+    const { className, expression, onClick } = props;
 
     return (
-        <StyledCalculatorScreen className={className}>
+        <StyledContainer className={className} onClick={onClick}>
             {expression}
-        </StyledCalculatorScreen>
+        </StyledContainer>
     );
 };
 

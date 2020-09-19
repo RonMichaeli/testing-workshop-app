@@ -28,7 +28,7 @@ const BUTTONS = [
     ButtonLabel.Result
 ];
 
-const StyledButtonPanel = styled.div`
+const StyledContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(${NUM_OF_COLUMNS}, 1fr);
     grid-template-rows: repeat(${NUM_OF_ROWS}, 1fr);
@@ -41,7 +41,6 @@ const StyledButton = styled(Button)<{ col: number; row: number }>`
     margin: 5px !important;
     box-shadow: none !important;
     font-size: larger !important;
-    font-family: monospace !important;
 `;
 
 type ButtonPanelProps = {
@@ -53,7 +52,7 @@ const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element
     const { className, onClick } = props;
 
     return (
-        <StyledButtonPanel className={className}>
+        <StyledContainer className={className}>
             {BUTTONS.map((label, index) => (
                 <StyledButton
                     key={index}
@@ -63,7 +62,7 @@ const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element
                     onClick={() => onClick(label)}
                 />
             ))}
-        </StyledButtonPanel>
+        </StyledContainer>
     );
 };
 

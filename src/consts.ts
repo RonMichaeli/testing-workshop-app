@@ -5,7 +5,7 @@ export enum ButtonLabel {
     Delete = "🠔",
     Percentage = "%",
     Add = "+",
-    Subtract = "—",
+    Subtract = "-",
     Multiply = "×",
     Divide = "÷",
     Dot = ".",
