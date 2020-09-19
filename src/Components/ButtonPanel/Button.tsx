@@ -3,16 +3,16 @@ import { Fab } from "@material-ui/core";
 
 type ButtonProps = {
     className?: string;
-    content: string;
+    label: string;
     onClick: () => void;
 };
 
 const Button: FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
-    const { className, content, onClick } = props;
+    const { className, label, onClick } = props;
 
     return (
         <Fab className={className} onClick={onClick}>
-            {content}
+            {label}
         </Fab>
     );
 };

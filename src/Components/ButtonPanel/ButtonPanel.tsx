@@ -1,31 +1,31 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
-import { ButtonContent } from "../Consts";
+import { ButtonLabel } from "../../consts";
 
 const NUM_OF_COLUMNS = 4;
 const NUM_OF_ROWS = 5;
 const BUTTONS = [
-    ButtonContent.Clear,
-    ButtonContent.Delete,
-    ButtonContent.Percentage,
-    ButtonContent.Divide,
-    ButtonContent.One,
-    ButtonContent.Two,
-    ButtonContent.Three,
-    ButtonContent.Multiply,
-    ButtonContent.Four,
-    ButtonContent.Five,
-    ButtonContent.Six,
-    ButtonContent.Subtract,
-    ButtonContent.Seven,
-    ButtonContent.Eight,
-    ButtonContent.Nine,
-    ButtonContent.Add,
-    ButtonContent.Blank,
-    ButtonContent.Zero,
-    ButtonContent.Dot,
-    ButtonContent.Result
+    ButtonLabel.Clear,
+    ButtonLabel.Delete,
+    ButtonLabel.Percentage,
+    ButtonLabel.Divide,
+    ButtonLabel.One,
+    ButtonLabel.Two,
+    ButtonLabel.Three,
+    ButtonLabel.Multiply,
+    ButtonLabel.Four,
+    ButtonLabel.Five,
+    ButtonLabel.Six,
+    ButtonLabel.Subtract,
+    ButtonLabel.Seven,
+    ButtonLabel.Eight,
+    ButtonLabel.Nine,
+    ButtonLabel.Add,
+    ButtonLabel.Blank,
+    ButtonLabel.Zero,
+    ButtonLabel.Dot,
+    ButtonLabel.Result
 ];
 
 const StyledButtonPanel = styled.div`
@@ -46,7 +46,7 @@ const StyledButton = styled(Button)<{ col: number; row: number }>`
 
 type ButtonPanelProps = {
     className?: string;
-    onClick: (buttonContent: ButtonContent) => void;
+    onClick: (buttonLabel: ButtonLabel) => void;
 };
 
 const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element => {
@@ -54,13 +54,13 @@ const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element
 
     return (
         <StyledButtonPanel className={className}>
-            {BUTTONS.map((buttonContent, index) => (
+            {BUTTONS.map((label, index) => (
                 <StyledButton
                     key={index}
                     col={(index % NUM_OF_COLUMNS) + 1}
                     row={(index / NUM_OF_ROWS) + 1}
-                    content={buttonContent}
-                    onClick={() => onClick(buttonContent)}
+                    label={label}
+                    onClick={() => onClick(label)}
                 />
             ))}
         </StyledButtonPanel>
