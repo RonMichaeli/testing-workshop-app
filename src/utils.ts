@@ -8,7 +8,7 @@ const BUTTON_LABEL_TO_VALUE: Record<string, string> = {
     [ButtonLabel.Divide]: "/",
 };
 
-const NUMBERS: ButtonLabel[] = [
+const NUMBERS: Set<ButtonLabel> = new Set([
     ButtonLabel.Zero,
     ButtonLabel.One,
     ButtonLabel.Two,
@@ -19,11 +19,13 @@ const NUMBERS: ButtonLabel[] = [
     ButtonLabel.Seven,
     ButtonLabel.Eight,
     ButtonLabel.Nine,
-];
+    ButtonLabel.OpenParentheses,
+    ButtonLabel.CloseParentheses,
+]);
 
 const endsWithNumber = (expression: Expression): boolean => {
     const lastChar = expression[expression.length - 1] as ButtonLabel;
-    return NUMBERS.includes(lastChar);
+    return NUMBERS.has(lastChar);
 };
 
 const removeLastChar = (str: string): string => str.slice(0, -1);
@@ -35,13 +37,18 @@ const cleanExpression = (expression: Expression): Expression => {
 export const roundNumber = (num: number, fractionDigits: number = 4): number => parseFloat(num.toFixed(fractionDigits));
 
 export const calculateResult = (expression: Expression): Expression => {
-    let parsedExpression: Expression = "";
-    for (const char of expression) {
-        parsedExpression += (BUTTON_LABEL_TO_VALUE[char] ?? char);
+    try {
+        let parsedExpression: Expression = "";
+        for (const char of expression) {
+            parsedExpression += (BUTTON_LABEL_TO_VALUE[char] ?? char);
+        }
+        // eslint-disable-next-line no-eval
+        const result: number = eval(cleanExpression(parsedExpression));
+        return `${roundNumber(result)}`;
     }
-    // eslint-disable-next-line no-eval
-    const result: number = eval(cleanExpression(parsedExpression));
-    return `${roundNumber(result)}`;
+    catch (err) {
+        return expression;
+    }
 };
 
 export const calculateExpression = (currentExpression: Expression, buttonLabel: ButtonLabel): Expression => {
@@ -50,10 +57,6 @@ export const calculateExpression = (currentExpression: Expression, buttonLabel: 
             return EMPTY_EXPRESSION;
         case ButtonLabel.Delete:
             return currentExpression.length === 1 ? EMPTY_EXPRESSION : removeLastChar(currentExpression);
-        case ButtonLabel.Blank:
-            return currentExpression;
-        case ButtonLabel.Percentage:
-            return endsWithNumber(currentExpression) ? calculateResult(`${currentExpression} / 100`) : currentExpression;
         case ButtonLabel.Result:
             return calculateResult(currentExpression);
         case ButtonLabel.Add:

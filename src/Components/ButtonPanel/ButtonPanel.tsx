@@ -6,9 +6,9 @@ import { ButtonLabel } from "../../types";
 const NUM_OF_COLUMNS = 4;
 const NUM_OF_ROWS = 5;
 const BUTTONS = [
-    ButtonLabel.Clear,
     ButtonLabel.Delete,
-    ButtonLabel.Percentage,
+    ButtonLabel.OpenParentheses,
+    ButtonLabel.CloseParentheses,
     ButtonLabel.Divide,
     ButtonLabel.One,
     ButtonLabel.Two,
@@ -22,7 +22,7 @@ const BUTTONS = [
     ButtonLabel.Eight,
     ButtonLabel.Nine,
     ButtonLabel.Add,
-    ButtonLabel.Blank,
+    ButtonLabel.Clear,
     ButtonLabel.Zero,
     ButtonLabel.Dot,
     ButtonLabel.Result

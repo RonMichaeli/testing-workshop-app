@@ -10,7 +10,8 @@ const StyledScreenContainer = styled.div`
 
 const StyledCurrencyIconContainer = styled.div`
     margin-left: 5px;
-    font-size: large;
+    font-size: 25px;
+    color: white;
 `;
 
 const StyledSimpleDisplay = styled(SimpleDisplay)<{ isSelected: boolean }>`

@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useEffect, useState } from 'react';
+import React, { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
 import { EMPTY_EXPRESSION } from "../consts";
 import { calculateExpression } from "../utils";
@@ -8,7 +8,7 @@ import { CurrencyDisplay, SimpleDisplay } from "./Displays";
 
 const StyledContainer = styled.div`
     width: fit-content;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@ const StyledCurrencyDisplay = styled(CurrencyDisplay)`
 
 const StyledButtonPanel = styled(ButtonPanel)`
     width: 100%;
-    margin-top: 5px;
+    margin-top: 10px;
 `;
 
 type CalculatorProps = {
@@ -41,24 +41,25 @@ type CalculatorProps = {
 
 const Calculator: FC<CalculatorProps> = (props: CalculatorProps): JSX.Element => {
     const [expression, setExpression] = useState<Expression>(EMPTY_EXPRESSION);
-    const [lastClickedButton, setLastClickedButton] = useState<ButtonLabel | null>(null);
+    const [shouldCalculateExpression, setShouldCalculateExpression] = useState<boolean>(false);
+    const lastClickedButton = useRef<ButtonLabel | null>(null);
 
     useEffect(() => {
-        if (lastClickedButton) {
-            const newExpression = calculateExpression(expression, lastClickedButton);
+        if (shouldCalculateExpression) {
+            const newExpression = calculateExpression(expression, lastClickedButton.current!);
             setExpression(newExpression);
-            setLastClickedButton(null);
+            setShouldCalculateExpression(false);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [lastClickedButton]);
+    }, [expression, shouldCalculateExpression]);
 
     const handleButtonClick = useCallback((buttonLabel: ButtonLabel): void => {
-        setLastClickedButton(buttonLabel);
+        lastClickedButton.current = buttonLabel;
+        setShouldCalculateExpression(true);
     }, []);
 
     return (
         <StyledContainer>
-            {/*<StyledCurrencyDisplay expression={expression} rate={props.exchangeRates[Currency.USD]}/>*/}
+            <StyledCurrencyDisplay expression={expression} rate={props.exchangeRates[Currency.USD]}/>
             <StyledSimpleDisplay expression={expression}/>
             <StyledButtonPanel onClick={handleButtonClick}/>
         </StyledContainer>

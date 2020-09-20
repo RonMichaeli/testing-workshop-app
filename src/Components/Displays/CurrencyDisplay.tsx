@@ -7,6 +7,12 @@ import { calculateResult, roundNumber } from "../../utils";
 const ILS_ICON = "₪";
 const USD_ICON = "$";
 
+const StyledCurrencyLabel = styled.div`
+    display: flex;
+    justify-content: center;
+    color: white;
+`;
+
 const Padder = styled.div<{ height?: number; width?: number }>`
     height: ${({ height }) => height || 0}px;
     width: ${({ width }) => width || 0}px;
@@ -28,21 +34,23 @@ const CurrencyDisplay: FC<CurrencyDisplayProps> = (props: CurrencyDisplayProps):
 
     return (
         <div className={className}>
-            1{USD_ICON} = {roundNumber(1 / rate)}{ILS_ICON}
-            <Padder height={5}/>
             <SimpleDisplayWithCurrency
                 isSelected={isIlsSelected}
                 expression={isIlsSelected ? expression : conversionResult}
                 currencyIcon={ILS_ICON}
                 onClick={() => setSelectedCurrency(Currency.ILS)}
             />
-            <Padder height={5}/>
+            <Padder height={10}/>
             <SimpleDisplayWithCurrency
                 isSelected={!isIlsSelected}
                 expression={!isIlsSelected ? expression : conversionResult}
                 currencyIcon={USD_ICON}
                 onClick={() => setSelectedCurrency(Currency.USD)}
             />
+            <Padder height={10}/>
+            <StyledCurrencyLabel>
+                1{USD_ICON} = {roundNumber(1 / rate)}{ILS_ICON}
+            </StyledCurrencyLabel>
         </div>
     );
 };
