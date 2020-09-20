@@ -12,13 +12,14 @@ const cleanExpression = (expression: Expression): Expression => {
     return endsWithNumber(expression) ? expression : removeLastChar(expression);
 };
 
-const calculateResult = (expression: Expression): Expression => {
+export const calculateResult = (expression: Expression): Expression => {
     let parsedExpression: Expression = "";
     for (const char of expression) {
         parsedExpression += (BUTTON_LABEL_TO_VALUE[char] ?? char);
     }
-    const result = eval(cleanExpression(parsedExpression));
-    return `${result}`;
+    // eslint-disable-next-line no-eval
+    const result: number = eval(cleanExpression(parsedExpression));
+    return `${parseFloat(result.toFixed(4))}`;
 };
 
 export const calculateExpression = (currentExpression: Expression, buttonLabel: ButtonLabel): Expression => {

@@ -1,11 +1,10 @@
 import React, { FC, useState } from 'react';
 import styled from '@emotion/styled';
-import CalculatorScreen from "./Screens/CalculatorScreen";
-import ButtonPanel from "./ButtonPanel/ButtonPanel";
 import { ButtonLabel, EMPTY_EXPRESSION } from "../consts";
 import { Expression } from "../types";
 import { calculateExpression } from "../utils";
-import CurrencyScreen from "./Screens/CurrencyScreen";
+import ButtonPanel from "./ButtonPanel";
+import { SimpleDisplay, CurrencyDisplay } from "./Displays";
 
 const StyledApp = styled.div`
     width: fit-content;
@@ -16,19 +15,18 @@ const StyledApp = styled.div`
     margin: auto;
     background-color: steelblue;
     border-radius: 25px;
-    font-family: monospace;
     box-shadow:
         0 3px 5px -1px rgba(0,0,0,0.2),
         0px 6px 10px 0px rgba(0,0,0,0.14),
         0px 1px 18px 0px rgba(0,0,0,0.12);
 `;
 
-const StyledCalculatorScreen = styled(CalculatorScreen)`
+const StyledSimpleDisplay = styled(SimpleDisplay)`
     min-height: 50px;
     width: 245px;
 `;
 
-const StyledCurrencyScreen = styled(CurrencyScreen)`
+const StyledCurrencyDisplay = styled(CurrencyDisplay)`
     width: 245px;
 `;
 
@@ -47,8 +45,8 @@ const App: FC = () => {
 
     return (
         <StyledApp>
-            <StyledCurrencyScreen expression={expression}/>
-            {/*<StyledCalculatorScreen expression={expression}/>*/}
+            <StyledCurrencyDisplay expression={expression} rate={3.5}/>
+            {/*<StyledSimpleDisplay expression={expression}/>*/}
             <StyledButtonPanel onClick={handleButtonClick}/>
         </StyledApp>
     );

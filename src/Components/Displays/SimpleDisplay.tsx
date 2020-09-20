@@ -8,17 +8,18 @@ const StyledContainer = styled.div`
     width: 100%;
     background-color: #7a8870;
     border: dimgray 1px solid;
+    font-family: monospace;
     font-size: xx-large;
     word-break: break-word;
 `;
 
-type CalculatorScreenProps = {
+type SimpleDisplayProps = {
     className?: string;
     expression: Expression;
     onClick?: () => void;
 };
 
-const CalculatorScreen: FC<CalculatorScreenProps> = (props: CalculatorScreenProps): JSX.Element => {
+const SimpleDisplay: FC<SimpleDisplayProps> = (props: SimpleDisplayProps): JSX.Element => {
     const { className, expression, onClick } = props;
 
     return (
@@ -28,4 +29,4 @@ const CalculatorScreen: FC<CalculatorScreenProps> = (props: CalculatorScreenProp
     );
 };
 
-export default CalculatorScreen;
+export default SimpleDisplay;
