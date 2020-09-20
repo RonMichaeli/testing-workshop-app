@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { Fab } from "@material-ui/core";
 
 type ButtonProps = {
@@ -8,13 +8,11 @@ type ButtonProps = {
 };
 
 const Button: FC<ButtonProps> = (props: ButtonProps): JSX.Element => {
-    const { className, label, onClick } = props;
-
     return (
-        <Fab className={className} onClick={onClick}>
-            {label}
+        <Fab className={props.className} onClick={props.onClick}>
+            {props.label}
         </Fab>
     );
 };
 
-export default Button;
+export default memo(Button);

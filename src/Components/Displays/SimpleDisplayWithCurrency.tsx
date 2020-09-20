@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import styled from "@emotion/styled";
 import SimpleDisplay from "./SimpleDisplay";
 import { Expression } from "../../types";
@@ -26,20 +26,18 @@ type SimpleDisplayWithCurrencyProps = {
 };
 
 const SimpleDisplayWithCurrency: FC<SimpleDisplayWithCurrencyProps> = (props: SimpleDisplayWithCurrencyProps): JSX.Element => {
-    const { isSelected, expression, currencyIcon, onClick } = props;
-
     return (
         <StyledScreenContainer>
             <StyledSimpleDisplay
-                isSelected={isSelected}
-                expression={expression}
-                onClick={onClick}
+                isSelected={props.isSelected}
+                expression={props.expression}
+                onClick={props.onClick}
             />
             <StyledCurrencyIconContainer>
-                {currencyIcon}
+                {props.currencyIcon}
             </StyledCurrencyIconContainer>
         </StyledScreenContainer>
     );
 };
 
-export default SimpleDisplayWithCurrency;
+export default memo(SimpleDisplayWithCurrency);

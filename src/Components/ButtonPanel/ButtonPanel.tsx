@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import styled from "@emotion/styled";
 import Button from "./Button";
-import { ButtonLabel } from "../../consts";
+import { ButtonLabel } from "../../types";
 
 const NUM_OF_COLUMNS = 4;
 const NUM_OF_ROWS = 5;
@@ -49,21 +49,19 @@ type ButtonPanelProps = {
 };
 
 const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element => {
-    const { className, onClick } = props;
-
     return (
-        <StyledContainer className={className}>
+        <StyledContainer className={props.className}>
             {BUTTONS.map((label, index) => (
                 <StyledButton
                     key={index}
                     col={(index % NUM_OF_COLUMNS) + 1}
                     row={(index / NUM_OF_ROWS) + 1}
                     label={label}
-                    onClick={() => onClick(label)}
+                    onClick={() => props.onClick(label)}
                 />
             ))}
         </StyledContainer>
     );
 };
 
-export default ButtonPanel;
+export default memo(ButtonPanel);

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import styled from "@emotion/styled";
 import { Expression } from "../../types";
 
@@ -20,13 +20,11 @@ type SimpleDisplayProps = {
 };
 
 const SimpleDisplay: FC<SimpleDisplayProps> = (props: SimpleDisplayProps): JSX.Element => {
-    const { className, expression, onClick } = props;
-
     return (
-        <StyledContainer className={className} onClick={onClick}>
-            {expression}
+        <StyledContainer className={props.className} onClick={props.onClick}>
+            {props.expression}
         </StyledContainer>
     );
 };
 
-export default SimpleDisplay;
+export default memo(SimpleDisplay);

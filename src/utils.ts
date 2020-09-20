@@ -1,5 +1,25 @@
-import { BUTTON_LABEL_TO_VALUE, ButtonLabel, EMPTY_EXPRESSION, NUMBERS } from "./consts";
-import { Expression } from "./types";
+import { EMPTY_EXPRESSION } from "./consts";
+import { ButtonLabel, Expression } from "./types";
+
+const BUTTON_LABEL_TO_VALUE: Record<string, string> = {
+    [ButtonLabel.Add]: "+",
+    [ButtonLabel.Subtract]: "-",
+    [ButtonLabel.Multiply]: "*",
+    [ButtonLabel.Divide]: "/",
+};
+
+const NUMBERS: ButtonLabel[] = [
+    ButtonLabel.Zero,
+    ButtonLabel.One,
+    ButtonLabel.Two,
+    ButtonLabel.Three,
+    ButtonLabel.Four,
+    ButtonLabel.Five,
+    ButtonLabel.Six,
+    ButtonLabel.Seven,
+    ButtonLabel.Eight,
+    ButtonLabel.Nine,
+];
 
 const endsWithNumber = (expression: Expression): boolean => {
     const lastChar = expression[expression.length - 1] as ButtonLabel;
@@ -12,6 +32,8 @@ const cleanExpression = (expression: Expression): Expression => {
     return endsWithNumber(expression) ? expression : removeLastChar(expression);
 };
 
+export const roundNumber = (num: number, fractionDigits: number = 4): number => parseFloat(num.toFixed(fractionDigits));
+
 export const calculateResult = (expression: Expression): Expression => {
     let parsedExpression: Expression = "";
     for (const char of expression) {
@@ -19,7 +41,7 @@ export const calculateResult = (expression: Expression): Expression => {
     }
     // eslint-disable-next-line no-eval
     const result: number = eval(cleanExpression(parsedExpression));
-    return `${parseFloat(result.toFixed(4))}`;
+    return `${roundNumber(result)}`;
 };
 
 export const calculateExpression = (currentExpression: Expression, buttonLabel: ButtonLabel): Expression => {

@@ -1,16 +1,11 @@
-import React, { FC, useMemo, useState } from "react";
+import React, { FC, memo, useState } from "react";
 import styled from "@emotion/styled";
 import SimpleDisplayWithCurrency from "./SimpleDisplayWithCurrency";
-import { Expression } from "../../types";
-import { calculateResult } from "../../utils";
+import { Currency, Expression } from "../../types";
+import { calculateResult, roundNumber } from "../../utils";
 
-const NIS_ICON = "₪";
+const ILS_ICON = "₪";
 const USD_ICON = "$";
-
-enum SelectedCurrency {
-    NIS,
-    USD,
-}
 
 const Padder = styled.div<{ height?: number; width?: number }>`
     height: ${({ height }) => height || 0}px;
@@ -26,30 +21,30 @@ type CurrencyDisplayProps = {
 const CurrencyDisplay: FC<CurrencyDisplayProps> = (props: CurrencyDisplayProps): JSX.Element => {
     const { className, expression, rate } = props;
 
-    const [selectedCurrency, setSelectedCurrency] = useState<SelectedCurrency>(SelectedCurrency.NIS);
+    const [selectedCurrency, setSelectedCurrency] = useState<Currency>(Currency.ILS);
 
-    const isNisSelected = selectedCurrency === SelectedCurrency.NIS;
-    const conversionResult = useMemo(() => calculateResult(`${expression} ${isNisSelected ? "/" : "*"} ${rate}`), [expression]);
+    const isIlsSelected = selectedCurrency === Currency.ILS;
+    const conversionResult = calculateResult(`${expression} ${isIlsSelected ? "*" : "/"} ${rate}`);
 
     return (
         <div className={className}>
-            1{USD_ICON} = {rate}{NIS_ICON}
+            1{USD_ICON} = {roundNumber(1 / rate)}{ILS_ICON}
             <Padder height={5}/>
             <SimpleDisplayWithCurrency
-                isSelected={isNisSelected}
-                expression={isNisSelected ? expression : conversionResult}
-                currencyIcon={NIS_ICON}
-                onClick={() => setSelectedCurrency(SelectedCurrency.NIS)}
+                isSelected={isIlsSelected}
+                expression={isIlsSelected ? expression : conversionResult}
+                currencyIcon={ILS_ICON}
+                onClick={() => setSelectedCurrency(Currency.ILS)}
             />
             <Padder height={5}/>
             <SimpleDisplayWithCurrency
-                isSelected={!isNisSelected}
-                expression={!isNisSelected ? expression : conversionResult}
+                isSelected={!isIlsSelected}
+                expression={!isIlsSelected ? expression : conversionResult}
                 currencyIcon={USD_ICON}
-                onClick={() => setSelectedCurrency(SelectedCurrency.USD)}
+                onClick={() => setSelectedCurrency(Currency.USD)}
             />
         </div>
     );
 };
 
-export default CurrencyDisplay;
+export default memo(CurrencyDisplay);
