@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import styled from "@emotion/styled";
+import Padder from "../Common/Padder";
 import SimpleDisplayWithCurrency from "./SimpleDisplayWithCurrency";
 import { Currency, Expression } from "../../types";
 import { calculateResult, roundNumber } from "../../utils";
@@ -11,11 +12,6 @@ const StyledCurrencyLabel = styled.div`
     display: flex;
     justify-content: center;
     color: white;
-`;
-
-const Padder = styled.div<{ height?: number; width?: number }>`
-    height: ${({ height }) => height || 0}px;
-    width: ${({ width }) => width || 0}px;
 `;
 
 type CurrencyDisplayProps = {

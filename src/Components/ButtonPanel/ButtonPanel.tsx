@@ -41,6 +41,7 @@ const StyledButton = styled(Button)<{ col: number; row: number }>`
     margin: 5px !important;
     box-shadow: none !important;
     font-size: larger !important;
+    border: 0.5px black solid !important;
 `;
 
 type ButtonPanelProps = {

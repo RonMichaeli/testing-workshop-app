@@ -1,6 +1,7 @@
 import React, { FC, memo } from "react";
 import styled from "@emotion/styled";
 import SimpleDisplay from "./SimpleDisplay";
+import Padder from "../Common/Padder";
 import { Expression } from "../../types";
 
 const StyledScreenContainer = styled.div`
@@ -9,7 +10,6 @@ const StyledScreenContainer = styled.div`
 `;
 
 const StyledCurrencyIconContainer = styled.div`
-    margin-left: 5px;
     font-size: 25px;
     color: white;
 `;
@@ -34,6 +34,7 @@ const SimpleDisplayWithCurrency: FC<SimpleDisplayWithCurrencyProps> = (props: Si
                 expression={props.expression}
                 onClick={props.onClick}
             />
+            <Padder width={10}/>
             <StyledCurrencyIconContainer>
                 {props.currencyIcon}
             </StyledCurrencyIconContainer>
