@@ -47,8 +47,8 @@ const Calculator: FC<CalculatorProps> = (props: CalculatorProps): JSX.Element =>
     return (
         <StyledContainer>
             <Tabs value={selectedMode} onChange={handleTabChange} indicatorColor={"primary"}>
-                <StyledTab value={Mode.Calculation} label={"CALC"}/>
-                <StyledTab value={Mode.Currency} label={"CONVERT"}/>
+                <StyledTab value={Mode.Calculation} label={"CALC"} data-testid={"testId-calculation-tab"}/>
+                <StyledTab value={Mode.Currency} label={"CONVERT"} data-testid={"testId-currency-tab"}/>
             </Tabs>
             <Padder height={10}/>
             {selectedMode === Mode.Calculation && <CalculationTab/>}

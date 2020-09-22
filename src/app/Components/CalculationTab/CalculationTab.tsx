@@ -37,7 +37,7 @@ const CalculationTab: FC = (): JSX.Element => {
 
     return (
         <>
-            <StyledScreen expression={expression}/>
+            <StyledScreen expression={expression} dataTestId={"testId-calculation-tab-screen"}/>
             <Padder height={10}/>
             <ButtonPanel
                 numOfColumns={4}

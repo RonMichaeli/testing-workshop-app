@@ -38,6 +38,7 @@ const ButtonPanel: FC<ButtonPanelProps> = (props: ButtonPanelProps): JSX.Element
             {props.buttons.map((label, index) => (
                 <StyledButton
                     key={index}
+                    dataTestId={`testId-button-${label}`}
                     col={(index % props.numOfColumns) + 1}
                     row={(index / props.numOfRows) + 1}
                     label={label}

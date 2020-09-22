@@ -30,6 +30,7 @@ const ScreenWithCurrency: FC<ScreenWithCurrencyProps> = (props: ScreenWithCurren
     return (
         <StyledContainer>
             <StyledScreen
+                dataTestId={`testId-currency-tab-screen-${props.isSelected ? "selected" : "unselected"}`}
                 isSelected={props.isSelected}
                 expression={props.expression}
                 onClick={props.onClick}

@@ -15,13 +15,14 @@ const StyledContainer = styled.div`
 
 type ScreenProps = {
     className?: string;
+    dataTestId: string;
     expression: Expression;
     onClick?: () => void;
 };
 
 const Screen: FC<ScreenProps> = (props: ScreenProps): JSX.Element => {
     return (
-        <StyledContainer className={props.className} onClick={props.onClick}>
+        <StyledContainer className={props.className} onClick={props.onClick} data-testid={props.dataTestId}>
             {props.expression}
         </StyledContainer>
     );
