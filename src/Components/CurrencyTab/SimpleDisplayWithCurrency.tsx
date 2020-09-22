@@ -1,10 +1,10 @@
 import React, { FC, memo } from "react";
 import styled from "@emotion/styled";
-import SimpleDisplay from "./SimpleDisplay";
-import Padder from "../Common/Padder";
 import { Expression } from "../../types";
+import { Padder, SimpleDisplay } from "../Common";
 
-const StyledScreenContainer = styled.div`
+const StyledContainer = styled.div`
+    width: 300px;
     display: flex;
     align-items: center;
 `;
@@ -15,7 +15,7 @@ const StyledCurrencyIconContainer = styled.div`
 `;
 
 const StyledSimpleDisplay = styled(SimpleDisplay)<{ isSelected: boolean }>`
-    border: ${({ isSelected }) => isSelected ? "cyan 2px" : "dimgray 1px"} solid;
+    border: ${({ isSelected }) => isSelected ? "white 3px" : "dimgray 1px"} solid;
     cursor: pointer;
 `;
 
@@ -28,7 +28,7 @@ type SimpleDisplayWithCurrencyProps = {
 
 const SimpleDisplayWithCurrency: FC<SimpleDisplayWithCurrencyProps> = (props: SimpleDisplayWithCurrencyProps): JSX.Element => {
     return (
-        <StyledScreenContainer>
+        <StyledContainer>
             <StyledSimpleDisplay
                 isSelected={props.isSelected}
                 expression={props.expression}
@@ -38,7 +38,7 @@ const SimpleDisplayWithCurrency: FC<SimpleDisplayWithCurrencyProps> = (props: Si
             <StyledCurrencyIconContainer>
                 {props.currencyIcon}
             </StyledCurrencyIconContainer>
-        </StyledScreenContainer>
+        </StyledContainer>
     );
 };
 

@@ -1,6 +1,4 @@
-export type Expression = string;
-
-export enum ButtonLabel {
+export enum Button {
     Clear = "C",
     Delete = "🠔",
     OpenParentheses = "(",
@@ -27,5 +25,7 @@ export enum Currency {
     USD = "USD",
     ILS = "ILS",
 }
+
+export type Expression = string;
 
 export type ExchangeRates = Record<Currency, number>;

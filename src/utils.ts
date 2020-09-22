@@ -1,30 +1,30 @@
 import { EMPTY_EXPRESSION } from "./consts";
-import { ButtonLabel, Expression } from "./types";
+import { Button, Expression } from "./types";
 
 const BUTTON_LABEL_TO_VALUE: Record<string, string> = {
-    [ButtonLabel.Add]: "+",
-    [ButtonLabel.Subtract]: "-",
-    [ButtonLabel.Multiply]: "*",
-    [ButtonLabel.Divide]: "/",
+    [Button.Add]: "+",
+    [Button.Subtract]: "-",
+    [Button.Multiply]: "*",
+    [Button.Divide]: "/",
 };
 
-const NUMBERS: Set<ButtonLabel> = new Set([
-    ButtonLabel.Zero,
-    ButtonLabel.One,
-    ButtonLabel.Two,
-    ButtonLabel.Three,
-    ButtonLabel.Four,
-    ButtonLabel.Five,
-    ButtonLabel.Six,
-    ButtonLabel.Seven,
-    ButtonLabel.Eight,
-    ButtonLabel.Nine,
-    ButtonLabel.OpenParentheses,
-    ButtonLabel.CloseParentheses,
+const NUMBERS: Set<Button> = new Set([
+    Button.Zero,
+    Button.One,
+    Button.Two,
+    Button.Three,
+    Button.Four,
+    Button.Five,
+    Button.Six,
+    Button.Seven,
+    Button.Eight,
+    Button.Nine,
+    Button.OpenParentheses,
+    Button.CloseParentheses,
 ]);
 
 const endsWithNumber = (expression: Expression): boolean => {
-    const lastChar = expression[expression.length - 1] as ButtonLabel;
+    const lastChar = expression[expression.length - 1] as Button;
     return NUMBERS.has(lastChar);
 };
 
@@ -51,21 +51,21 @@ export const calculateResult = (expression: Expression): Expression => {
     }
 };
 
-export const calculateExpression = (currentExpression: Expression, buttonLabel: ButtonLabel): Expression => {
-    switch (buttonLabel) {
-        case ButtonLabel.Clear:
+export const calculateExpression = (currentExpression: Expression, button: Button): Expression => {
+    switch (button) {
+        case Button.Clear:
             return EMPTY_EXPRESSION;
-        case ButtonLabel.Delete:
+        case Button.Delete:
             return currentExpression.length === 1 ? EMPTY_EXPRESSION : removeLastChar(currentExpression);
-        case ButtonLabel.Result:
+        case Button.Result:
             return calculateResult(currentExpression);
-        case ButtonLabel.Add:
-        case ButtonLabel.Divide:
-        case ButtonLabel.Multiply:
-        case ButtonLabel.Subtract:
-        case ButtonLabel.Dot:
-            return cleanExpression(currentExpression) + buttonLabel;
+        case Button.Add:
+        case Button.Divide:
+        case Button.Multiply:
+        case Button.Subtract:
+        case Button.Dot:
+            return cleanExpression(currentExpression) + button;
         default:
-            return currentExpression === EMPTY_EXPRESSION ? buttonLabel : currentExpression + buttonLabel;
+            return currentExpression === EMPTY_EXPRESSION ? button : currentExpression + button;
     }
 };
