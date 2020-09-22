@@ -2,9 +2,9 @@ import React, { FC, memo } from "react";
 import styled from "@emotion/styled";
 import { useExpression } from "../../Hooks";
 import { Button } from "../../types";
-import { ButtonPanel, Padder, SimpleDisplay } from "../Common";
+import { ButtonPanel, Padder, Screen } from "../Common";
 
-const StyledSimpleDisplay = styled(SimpleDisplay)`
+const StyledScreen = styled(Screen)`
     min-height: 50px;
     width: 300px;
 `;
@@ -37,7 +37,7 @@ const CalculationTab: FC = (): JSX.Element => {
 
     return (
         <>
-            <StyledSimpleDisplay expression={expression}/>
+            <StyledScreen expression={expression}/>
             <Padder height={10}/>
             <ButtonPanel
                 numOfColumns={4}

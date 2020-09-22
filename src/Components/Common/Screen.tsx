@@ -13,13 +13,13 @@ const StyledContainer = styled.div`
     word-break: break-word;
 `;
 
-type SimpleDisplayProps = {
+type ScreenProps = {
     className?: string;
     expression: Expression;
     onClick?: () => void;
 };
 
-const SimpleDisplay: FC<SimpleDisplayProps> = (props: SimpleDisplayProps): JSX.Element => {
+const Screen: FC<ScreenProps> = (props: ScreenProps): JSX.Element => {
     return (
         <StyledContainer className={props.className} onClick={props.onClick}>
             {props.expression}
@@ -27,4 +27,4 @@ const SimpleDisplay: FC<SimpleDisplayProps> = (props: SimpleDisplayProps): JSX.E
     );
 };
 
-export default memo(SimpleDisplay);
+export default memo(Screen);

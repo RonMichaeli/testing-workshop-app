@@ -4,7 +4,7 @@ import { useExpression } from "../../Hooks";
 import { calculateResult, roundNumber } from "../../utils";
 import { Button } from "../../types";
 import { ButtonPanel, Padder } from "../Common";
-import SimpleDisplayWithCurrency from "./SimpleDisplayWithCurrency";
+import ScreenWithCurrency from "./ScreenWithCurrency";
 
 const BUTTONS: Button[] = [
     Button.One,
@@ -27,27 +27,26 @@ const StyledRateLabel = styled.div`
     color: white;
 `;
 
-const ILS_ICON = "₪";
-const USD_ICON = "$";
-
-enum Display {
+enum Screen {
     Top = "top",
     Bottom = "bottom",
 }
 
 type CurrencyTabProps = {
     rate: number;
+    topScreenCurrencyIcon: string;
+    bottomScreenCurrencyIcon: string;
 };
 
 const CurrencyTab: FC<CurrencyTabProps> = (props: CurrencyTabProps): JSX.Element => {
-    const { rate } = props;
+    const { rate, topScreenCurrencyIcon, bottomScreenCurrencyIcon } = props;
 
-    const [selectedDisplay, setSelectedDisplay] = useState<Display>(Display.Top);
+    const [selectedScreen, setSelectedScreen] = useState<Screen>(Screen.Top);
     const { expression: topExpression, setExpression: setTopExpression, handleButtonClick: handleButtonClickTop } = useExpression();
     const { expression: bottomExpression, setExpression: setBottomExpression, handleButtonClick: handleButtonClickBottom } = useExpression();
 
     useEffect(() => {
-        if (selectedDisplay === Display.Top) {
+        if (selectedScreen === Screen.Top) {
             setBottomExpression(calculateResult(`${topExpression} * ${rate}`));
         }
         else {
@@ -57,29 +56,29 @@ const CurrencyTab: FC<CurrencyTabProps> = (props: CurrencyTabProps): JSX.Element
 
     return (
         <>
-            <SimpleDisplayWithCurrency
-                isSelected={selectedDisplay === Display.Top}
+            <ScreenWithCurrency
+                isSelected={selectedScreen === Screen.Top}
                 expression={topExpression}
-                currencyIcon={ILS_ICON}
-                onClick={() => setSelectedDisplay(Display.Top)}
+                currencyIcon={topScreenCurrencyIcon}
+                onClick={() => setSelectedScreen(Screen.Top)}
             />
             <Padder height={10}/>
-            <SimpleDisplayWithCurrency
-                isSelected={selectedDisplay === Display.Bottom}
+            <ScreenWithCurrency
+                isSelected={selectedScreen === Screen.Bottom}
                 expression={bottomExpression}
-                currencyIcon={USD_ICON}
-                onClick={() => setSelectedDisplay(Display.Bottom)}
+                currencyIcon={bottomScreenCurrencyIcon}
+                onClick={() => setSelectedScreen(Screen.Bottom)}
             />
             <Padder height={10}/>
             <StyledRateLabel>
-                1{USD_ICON} = {roundNumber(1 / rate)}{ILS_ICON}
+                1{topScreenCurrencyIcon} = {roundNumber(rate)}{bottomScreenCurrencyIcon}
             </StyledRateLabel>
             <Padder height={10}/>
             <ButtonPanel
                 numOfColumns={3}
                 numOfRows={4}
                 buttons={BUTTONS}
-                onClick={selectedDisplay === Display.Top ? handleButtonClickTop : handleButtonClickBottom}
+                onClick={selectedScreen === Screen.Top ? handleButtonClickTop : handleButtonClickBottom}
             />
         </>
     );

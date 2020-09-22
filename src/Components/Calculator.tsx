@@ -52,7 +52,13 @@ const Calculator: FC<CalculatorProps> = (props: CalculatorProps): JSX.Element =>
             </Tabs>
             <Padder height={10}/>
             {selectedMode === Mode.Calculation && <CalculationTab/>}
-            {selectedMode === Mode.Currency && <CurrencyTab rate={props.exchangeRates[Currency.USD]}/>}
+            {selectedMode === Mode.Currency && (
+                <CurrencyTab
+                    rate={props.exchangeRates[Currency.USD]}
+                    topScreenCurrencyIcon={"₪"}
+                    bottomScreenCurrencyIcon={"$"}
+                />
+            )}
         </StyledContainer>
     );
 };
