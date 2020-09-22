@@ -52,6 +52,7 @@ const CurrencyTab: FC<CurrencyTabProps> = (props: CurrencyTabProps): JSX.Element
         else {
             setTopExpression(calculateResult(`${bottomExpression} / ${rate}`));
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [topExpression, bottomExpression, setBottomExpression, setTopExpression, rate]);
 
     return (
