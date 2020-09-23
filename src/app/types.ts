@@ -1,14 +1,19 @@
 export enum Button {
+    // Display-only
     Clear = "C",
     Delete = "🠔",
-    OpenParentheses = "(",
-    CloseParentheses = ")",
+    Result = "=",
+
+    // Operators
     Add = "+",
     Subtract = "-",
     Multiply = "×",
     Divide = "÷",
     Dot = ".",
-    Result = "=",
+
+    // Numbers
+    OpenParentheses = "(",
+    CloseParentheses = ")",
     One = "1",
     Two = "2",
     Three = "3",
