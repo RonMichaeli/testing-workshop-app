@@ -16,7 +16,7 @@
         * Clear ("C")\
         Sets the expression to "0"
         * Delete ("🠔")\
-        Deletes the last character of the expression. Sets "0" if the expression length is 1
+        Deletes the last character of the expression. Sets "0" when clicked with expression of length 1
         * Result ("=")\
         Calculates the expression result. Does nothing if the expression is invalid
     * **Operators**
@@ -29,7 +29,7 @@
         * 0 to 9
         * Open parentheses - "("
         * Close parentheses - ")"
-* Numbers appear in the expression in the same order they were clicked on
+* Numbers appear in the display panel in the exact same order they were clicked on
 * Operators ...
 
 ### Standard Calculation Tab
