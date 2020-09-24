@@ -1,0 +1,7 @@
+# Under "tests" folder, create a new folder with your name (e.g. "Ron")
+# Inside the folder you created, create test files with the following naming convention:
+* <original filename>.test.ts(x)
+
+# Examples:
+## If you want to test the "Screen" component, the test file should be created here: tests/Ron/Screen.test.tsx
+## If you want to test the custom hook, the test file should be created here: tests/Ron/useExpression.test.ts
