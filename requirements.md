@@ -28,8 +28,8 @@
         * Dot (".")
         <br/>
         <br/>
-        1. Two consecutive operators can't appear in the display panel.
-        1. Clicking the same operator multiple times in a row adds only one operator to the end of the expression.
+        1. Two consecutive operators can't appear in the display panel.  
+        1. Clicking the same operator multiple times in a row adds only one operator to the end of the expression.  
         1. Clicking different operators in a row replaces the previous operator with the new one.
         
     1. **Numbers**
@@ -64,9 +64,9 @@
 `1 {base currency icon} = {rate}{other currency icon}` 
 1. Rate should be fetched on the calculator's initial load
     1. A loading spinner is displayed while the data is being fetched
-    1. In case of error, an alert-box should pop. Nothing is displayed   
+    1. In case of error, an alert-box should pop with the error details. The calculator is not displayed   
 1. The top panel represents the base currency and the bottom panel represents the other currency
 1. The user can click on each panel to select it
 1. The selected panel displays the expression the user inserted. The unselected panel **immediately** displays the conversion result, based on the current exchange rate
 1. Conversion result is rounded to a **maximum** of 4 decimal digits
-2. Both display panels width is always fixed. Their height is extended when the expression is too long to fit
+1. Both display panels width is always fixed. Their height is extended when the expression is too long to fit
