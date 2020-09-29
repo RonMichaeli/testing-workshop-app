@@ -27,9 +27,11 @@
         * Divide ("÷")
         * Dot (".")
         <br/>
-        1. Two consecutive operators can't appear in the display panel.  
-        2. Clicking the same operator multiple times in a row adds only one operator to the end of the expression.  
-        3. Clicking different operators in a row replaces the previous operator with the new one.
+        a. Two consecutive operators can't appear in the display panel.
+        <br/>
+        b. Clicking the same operator multiple times in a row adds only one operator to the end of the expression.
+        <br/>
+        c. Clicking different operators in a row replaces the previous operator with the new one.
         
     1. **Numbers**
         * 0 to 9
