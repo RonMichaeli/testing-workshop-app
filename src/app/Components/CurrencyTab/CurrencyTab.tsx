@@ -34,12 +34,12 @@ enum Screen {
 
 type CurrencyTabProps = {
     rate: number;
-    topScreenCurrencyIcon: string;
-    bottomScreenCurrencyIcon: string;
+    baseCurrencyIcon: string;
+    otherCurrencyIcon: string;
 };
 
 const CurrencyTab: FC<CurrencyTabProps> = (props: CurrencyTabProps): JSX.Element => {
-    const { rate, topScreenCurrencyIcon, bottomScreenCurrencyIcon } = props;
+    const { rate, baseCurrencyIcon, otherCurrencyIcon } = props;
 
     const [selectedScreen, setSelectedScreen] = useState<Screen>(Screen.Top);
     const { expression: topExpression, setExpression: setTopExpression, handleButtonClick: handleButtonClickTop } = useExpression();
@@ -60,19 +60,19 @@ const CurrencyTab: FC<CurrencyTabProps> = (props: CurrencyTabProps): JSX.Element
             <ScreenWithCurrency
                 isSelected={selectedScreen === Screen.Top}
                 expression={topExpression}
-                currencyIcon={topScreenCurrencyIcon}
+                currencyIcon={baseCurrencyIcon}
                 onClick={() => setSelectedScreen(Screen.Top)}
             />
             <Padder height={10}/>
             <ScreenWithCurrency
                 isSelected={selectedScreen === Screen.Bottom}
                 expression={bottomExpression}
-                currencyIcon={bottomScreenCurrencyIcon}
+                currencyIcon={otherCurrencyIcon}
                 onClick={() => setSelectedScreen(Screen.Bottom)}
             />
             <Padder height={10}/>
             <StyledRateLabel>
-                1{topScreenCurrencyIcon} = {roundNumber(rate)}{bottomScreenCurrencyIcon}
+                1{baseCurrencyIcon} = {roundNumber(rate)}{otherCurrencyIcon}
             </StyledRateLabel>
             <Padder height={10}/>
             <ButtonPanel

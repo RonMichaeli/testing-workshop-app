@@ -11,6 +11,8 @@ const StyledContainer = styled.div`
     font-family: monospace;
     font-size: xx-large;
     word-break: break-word;
+    box-sizing: border-box;
+    padding: 0 4px;
 `;
 
 type ScreenProps = {

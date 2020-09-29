@@ -38,10 +38,10 @@ export const roundNumber = (num: number, fractionDigits: number = 4): number => 
 
 export const calculateResult = (expression: Expression): Expression => {
     try {
-        let parsedExpression: Expression = "";
-        for (const char of expression) {
-            parsedExpression += (BUTTON_LABEL_TO_VALUE[char] ?? char);
-        }
+        const parsedExpression = expression
+            .split("")
+            .map((label) => BUTTON_LABEL_TO_VALUE[label] ?? label)
+            .join("");
         // eslint-disable-next-line no-eval
         const result: number = eval(cleanExpression(parsedExpression));
         return `${roundNumber(result)}`;

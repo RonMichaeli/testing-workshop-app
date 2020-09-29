@@ -8,7 +8,7 @@ import { Padder } from "./Common";
 
 const StyledContainer = styled.div`
     width: fit-content;
-    height: 450px;
+    min-height: 450px;
     padding: 20px 10px 10px 10px;
     display: flex;
     flex-direction: column;
@@ -55,8 +55,8 @@ const Calculator: FC<CalculatorProps> = (props: CalculatorProps): JSX.Element =>
             {selectedMode === Mode.Currency && (
                 <CurrencyTab
                     rate={props.exchangeRates[Currency.USD]}
-                    topScreenCurrencyIcon={"₪"}
-                    bottomScreenCurrencyIcon={"$"}
+                    baseCurrencyIcon={"₪"}
+                    otherCurrencyIcon={"$"}
                 />
             )}
         </StyledContainer>
