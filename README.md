@@ -19,4 +19,4 @@ Run `npm run test` from the root directory.
 
 **Note:** this command will run **all** `*.test.ts/tsx` files in the repo, so make sure to name your test files properly.
 ## Product Requirements
- See requirements here: []()
+ See requirements [here](https://github.com/RonMichaeli/testing-workshop-app/blob/master/requirements.md)

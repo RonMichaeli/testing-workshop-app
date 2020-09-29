@@ -1,4 +1,4 @@
-# Product Requirements
+# Personalized Calculator - Product Requirements
 ### Modes
 1. The calculator offers two modes:
     * Standard calculation
