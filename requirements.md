@@ -38,7 +38,7 @@
         * Open parentheses - "("
         * Close parentheses - ")"
         <br/>
-        1. Numbers appear in the display panel in the same order they were clicked on. No restrictions.
+        a. Numbers appear in the display panel in the same order they were clicked on. No restrictions.
 1. These requirements apply to every mode in the calculator
 
     ### Standard Calculation Tab
