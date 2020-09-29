@@ -21,6 +21,7 @@ const App: FC = (): JSX.Element => {
                 setExchangeRates(rates);
             })
             .catch((err) => {
+                alert(err);
                 throw err;
             })
             .finally(() => {

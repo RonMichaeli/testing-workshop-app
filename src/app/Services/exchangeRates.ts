@@ -15,6 +15,6 @@ export const getExchangeRates = async (baseCurrency = Currency.ILS): Promise<Res
         return responseJson.rates;
     }
     catch (err) {
-        throw new Error(`Could not get exchange rates from ${API}.\n${err}`);
+        throw new Error(`Could not get exchange rates from "${API}"\n${err}`);
     }
 };
