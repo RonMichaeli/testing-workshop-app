@@ -18,7 +18,7 @@
         1. Delete ("🠔")  
         Deletes the last character of the expression. Sets "0" when clicked with expression of length 1
         1. Result ("=")  
-        Calculates the expression result. Does nothing if the expression is invalid
+        Calculates the expression result. Does nothing if the expression is invalid (including division by 0)
     
     1. **Operators**
         * Add ("+")

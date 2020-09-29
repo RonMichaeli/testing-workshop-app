@@ -53,18 +53,23 @@ export const calculateResult = (expression: Expression): Expression => {
 
 export const calculateExpression = (currentExpression: Expression, button: Button): Expression => {
     switch (button) {
+        // Display-only
         case Button.Clear:
             return EMPTY_EXPRESSION;
         case Button.Delete:
             return currentExpression.length === 1 ? EMPTY_EXPRESSION : removeLastChar(currentExpression);
         case Button.Result:
             return calculateResult(currentExpression);
+
+        // Operators
         case Button.Add:
         case Button.Divide:
         case Button.Multiply:
         case Button.Subtract:
         case Button.Dot:
             return cleanExpression(currentExpression) + button;
+
+        // Numbers
         default:
             return currentExpression === EMPTY_EXPRESSION ? button : currentExpression + button;
     }
