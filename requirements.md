@@ -25,7 +25,8 @@
         * Subtract ("-")
         * Multiply ("×")
         * Divide ("÷")
-        * Dot (".")  
+        * Dot (".")
+        <br/>
         1. Two consecutive operators can't appear in the display panel.  
         2. Clicking the same operator multiple times in a row adds only one operator to the end of the expression.  
         3. Clicking different operators in a row replaces the previous operator with the new one.
@@ -33,7 +34,8 @@
     1. **Numbers**
         * 0 to 9
         * Open parentheses - "("
-        * Close parentheses - ")"  
+        * Close parentheses - ")"
+        <br/>
         1. Numbers appear in the display panel in the same order they were clicked on. No restrictions.
 1. These requirements apply to every mode in the calculator
 
