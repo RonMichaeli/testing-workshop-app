@@ -1,12 +1,5 @@
-import { EMPTY_EXPRESSION } from "./consts";
+import { BUTTON_TO_VALUE_MAP, EMPTY_EXPRESSION } from "./consts";
 import { Button, Expression } from "./types";
-
-const BUTTON_LABEL_TO_VALUE: Record<string, string> = {
-    [Button.Add]: "+",
-    [Button.Subtract]: "-",
-    [Button.Multiply]: "*",
-    [Button.Divide]: "/",
-};
 
 const NUMBERS: Set<Button> = new Set([
     Button.Zero,
@@ -40,10 +33,13 @@ export const calculateResult = (expression: Expression): Expression => {
     try {
         const parsedExpression = expression
             .split("")
-            .map((label) => BUTTON_LABEL_TO_VALUE[label] ?? label)
+            .map((button) => BUTTON_TO_VALUE_MAP[button] ?? button)
             .join("");
         // eslint-disable-next-line no-eval
         const result: number = eval(cleanExpression(parsedExpression));
+        if (result === Infinity) {
+            throw new Error("Invalid expression. Why would you divide by zero?");
+        }
         return `${roundNumber(result)}`;
     }
     catch (err) {
