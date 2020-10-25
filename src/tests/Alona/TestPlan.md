@@ -1,14 +1,14 @@
 ## My Test Plan
 ### Test 1
-What?
+What?  
     * Requirement: _____  
     * Client: _____  
-    * Requirement type: __Functional / Performance / Security / UX__  
-    * Participating functions:
-        1. __filename / function name__
-        1. __filename / function name__
-        1. __filename / function name__
-How?
-    * Given:
-    * When:
-    * Then:
+    * Requirement type: _Functional / Performance / Security / UX_  
+    * Participating functions:  
+        1. _filename / function name_  
+        1. _filename / function name_  
+        1. _filename / function name_  
+How?  
+    * Given:  
+    * When:  
+    * Then:  
