@@ -1,7 +1,7 @@
 ## My Test Plan
 ### Test 1
 **What?**  
-* Requirement: <input type="text" id="name" name="name"/>
+* Requirement: __________  
 * Client: __________  
 * Requirement type: _Functional / Performance / Security / UX_  
 * Participating functions:  
