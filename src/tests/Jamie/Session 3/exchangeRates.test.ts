@@ -1,17 +1,18 @@
 import { getExchangeRates } from "../../../app/Services/exchangeRates";
 
 describe("Exchange Rates Service", () => {
-    // ToDo: name the 'it' according the convention we've learned
-
-    it("should", () => {
-        // ToDo: write a test for the first requirement
+    it("should return rates if all okay", async () => {
+        const rates = await getExchangeRates();
+        expect(rates.USD).toBeDefined();
     });
 
-    it("should", () => {
-        // ToDo: write a test for the second requirement
+    it("should throw an error on connection issues", async () => {
+        const rates = await getExchangeRates();
+        expect(rates.USD).toBeDefined();
     });
 
-    it("should", () => {
-        // ToDo: write a test for the third requirement
+    it("should throw an error on unexpected response", async () => {
+        const rates = await getExchangeRates();
+        expect(rates.USD).toBeDefined();
     });
 });
