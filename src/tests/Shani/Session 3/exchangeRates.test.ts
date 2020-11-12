@@ -21,7 +21,7 @@ describe("Exchange Rates Service", () => {
 
     it("should throw an error when request fails", () => {
         // ToDo: write a test for the second requirement
-        const errorMessage = 'TEST ERROR';
+        const errorMessage: string = 'TEST ERROR';
         global.fetch = jest.fn().mockRejectedValue(errorMessage);
 
         expect(getExchangeRates()).rejects.toThrowError(`Could not get exchange rates from "https://api.exchangeratesapi.io/latest"\n` + errorMessage);
