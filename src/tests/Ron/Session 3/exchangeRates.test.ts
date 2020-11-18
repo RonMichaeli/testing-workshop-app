@@ -22,8 +22,6 @@ describe("Exchange Rates Service", () => {
         // arrange
         const mockedRates = { [Currency.USD]: 3.68 };
 
-        /**
-         * We could have done 'global.fetch = jest.fn() **/
         jest.spyOn(global, "fetch").mockResolvedValue({
             json: jest.fn().mockResolvedValue({ rates: mockedRates })
         } as any);
