@@ -16,6 +16,7 @@ const App: FC = (): JSX.Element => {
     const [exchangeRates, setExchangeRates] = useState<ExchangeRates | null>(null);
 
     useEffect(() => {
+        setLoading(true);
         getExchangeRates()
             .then((rates) => {
                 setExchangeRates(rates);
